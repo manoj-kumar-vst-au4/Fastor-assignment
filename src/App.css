@@ -1,0 +1,70 @@
+.reg-container{
+    display: flex;
+    justify-content: center;
+}
+
+.reg-form{
+  width: 500px;
+  height: 175px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+}
+
+.input{
+  width: 327px;
+  border: none;
+  background-color: whitesmoke;
+  height: 35px;
+  font-size: 17px;
+  color: gray;
+  margin-top: 45px;
+}
+
+.button{
+  margin-top: 10px;
+  border: 1px solid greenyellow;
+  background-color: green;
+  width: 70px;
+  text-align: center;
+  color: white;
+  height: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* border-radius: 10px; */
+}
+
+.image{
+  height: 130px;
+  width: 150px;
+  border-radius: 15px;
+}
+
+.image2{
+  width: 400px;
+  height: 400px;
+  margin-top: 100px;
+}
+
+.logo{
+  position: absolute;
+  top:250px;
+}
+
+.image-container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.text-align{
+  text-align: center;
+}
+
+.icon{
+  width:30px;
+}
+.heading-color{
+  color: #0c6767
+}
