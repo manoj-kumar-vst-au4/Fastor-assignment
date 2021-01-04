@@ -8,6 +8,7 @@ import { Route } from 'react-router-dom';
 import axios from "axios";
 import qs from 'qs';
 import { useHistory } from 'react-router-dom';
+import * as Variable from './Variables';
 
 const App = () => {
   const [mobile, setMobile] = React.useState("");
@@ -15,11 +16,24 @@ const App = () => {
   const [otp, setOtp] = React.useState('');
   const [token, setToken] = React.useState('');
   const [data, setData] = React.useState([]);
+  const [graphData, setGraphData] = React.useState([]);
   const history = useHistory();
   const handleMobile = (e) => {
     setMobile(e.target.value);
   }
 
+  // here , this function is used to fetch data from graphql api.
+  const fetchGraphData = () => {
+    axios.post(Variable.GRAPHQL_ENDPOINT, { query: Variable.QUERY }).then(
+      (res) => {
+        setGraphData(res.data.data.launchesPast);
+      }
+    ).catch(
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
   const handleOTP = (e) => {
     setOtp(e.target.value);
   }
@@ -94,30 +108,31 @@ const App = () => {
       });
   }
 
-  const getImage=(link)=>{
+  const getImage = (link) => {
     setImage(link);
     history.push('/image');
   }
-  React.useEffect(()=>{
+  React.useEffect(() => {
     setMobile('');
     setOtp('');
     history.push('/');
-  },[])
+    fetchGraphData();
+  }, [])
   return (
     <div>
       <Route exact path="/">
-        <RegistrationPage mobile={mobile} handleMobile={handleMobile} handleRegistration={handleRegistration} />
+        <RegistrationPage mobile={mobile} handleMobile={handleMobile} handleRegistration={handleRegistration} graphData={graphData} />
       </Route>
       <Route path="/login">
         <LoginPage otp={otp} handleLogin={handleLogin} handleOTP={handleOTP} />
       </Route>
       <Route path="/list">
-        <div style={{display:'flex',justifyContent:'center'}}>
-          <RestaurentList data={data}  getImage={getImage}/>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <RestaurentList data={data} getImage={getImage} />
         </div>
       </Route>
       <Route path="/image">
-        <RestaurentImage  image={image}/>
+        <RestaurentImage image={image} />
       </Route>
     </div>
   );

@@ -68,3 +68,21 @@
 .heading-color{
   color: #0c6767
 }
+
+.graph-image{
+  margin-top: 16px;
+    margin-left: 5px;
+    border-radius: 50%;
+}
+
+.graph-container{
+  border: 1px solid black;
+    width: 600px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.graph-ship{
+  display: flex;
+  justify-content: center;
+}
